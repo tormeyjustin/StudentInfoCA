@@ -23,6 +23,7 @@ public class Main {
         // Test Student class
         Student test = new Student("Justin", "Tormey", 4, "sba23239");
         System.out.println(test.firstName);
+        System.out.println(test.workload);
         
     }
     
