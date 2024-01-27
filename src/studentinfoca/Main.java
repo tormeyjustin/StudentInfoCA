@@ -7,7 +7,9 @@ package studentinfoca;
 /**
  *
  * @author Justin
+ * 
  */
+
 public class Main {
 
     /**
