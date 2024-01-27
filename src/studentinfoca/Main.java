@@ -12,16 +12,17 @@ package studentinfoca;
 
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         
         // Test read file
-        FileIO fileR = new FileIO();
-        String txt = fileR.readFile("students.txt");
-        System.out.println(txt);
-        fileR.appendToFile(txt, "status.txt");
+        //FileIO fileR = new FileIO();
+        //String txt = fileR.readFile("students.txt");
+        //System.out.println(txt);
+        //fileR.appendToFile(txt, "status.txt");
+        
+        // Test Student class
+        Student test = new Student("Justin", "Tormey", 4, "sba23239");
+        System.out.println(test.firstName);
         
     }
     
