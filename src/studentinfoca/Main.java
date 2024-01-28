@@ -11,6 +11,11 @@ package studentinfoca;
  */
 
 public class Main {
+    
+    public static void readStringLines(String str) {
+        
+        
+    }
 
     public static void main(String[] args) {
         
@@ -21,11 +26,16 @@ public class Main {
         //fileR.appendToFile(txt, "status.txt");
         
         // Test Student class
-        Student test = new Student("Justin", "Tormey", 4, "sba23239");
-        System.out.println(test.firstName);
-        System.out.println(test.workload);
+        //Student test = new Student("Justin", "Tormey", 4, "sba23239");
+        //System.out.println(test.firstName);
+        //System.out.println(test.workload);
         
-        System.out.println(test.stringOutput());
+        //System.out.println(test.stringOutput());
+        
+        // Test Student validator
+        //Student.validateFirstName("Justin3");
+        //Student.validateLastName("Justin3");
+        Student.validateStudentId("21DIP0000000000022");
         
     }
     

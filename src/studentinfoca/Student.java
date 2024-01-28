@@ -4,6 +4,9 @@
  */
 package studentinfoca;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Justin
@@ -38,6 +41,82 @@ public class Student {
         }
     }
     
+    // Input validation
+    
+    public static boolean validateFirstName(String str) {
+        // Check first name 
+        if (str.matches("[a-zA-Z]+")) {
+            return true;
+        } else {
+            System.out.println("Name must contain characters a-z only.");
+            return false;
+        }
+    }
+    
+    public static boolean validateLastName(String str) {
+        if (str.matches("[a-zA-Z0-9]+")) {
+            return true;
+        } else {
+            System.out.println("Name must contain characters a-z or digits only.");
+            return false;
+        }
+    }
+    
+    public static boolean validateClassCount(int classes) {
+        if (classes >= 1 && classes < 8) {
+            return true;
+        } else {
+            System.out.println("Class count must be a number between 1 annd 8.");
+            return false;
+        }
+    }
+    
+    public static boolean validateStudentId(String id){
+
+        // The student “number” must be a minimum of 6 characters with the first 2 characters being numbers,
+        if (id.length() < 6) {
+            System.out.println("Student ID must be a minimum of 6 characters.");
+            return false;            
+        }
+        
+        // the 3rd  and 4th characters (and possibly 5th ) being a letter,
+        if (id.matches("[0-9]{2}[a-zA-Z]{2,3}.*")) {
+        } else {
+            System.out.println("The first 2 characters must be digits and the 3rd and 4th characters (and possibly 5th) must be a letter.");
+            return false;
+        }
+        
+        // Ensure that the student number year is at least 2020 (i.e. that the number starts with 20 or higher)
+        if (Integer.parseInt(id.substring(0,2)) < 20) {
+            System.out.println("First two digits reperesenting year must be 20 or higher");
+            return false;
+        }
+        
+        // and everything after the last letter character being a number.
+        if (!id.matches("[0-9]{2}[a-zA-Z]{2,3}\\d*")) {
+            System.out.println("ID Must have numbers after the letters");
+            return false;
+        }
+        
+        // Ensure that the number after the letter(s) is reasonable – i.e. that it is between 1 and 200
+        String regex = "\\d+$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(id);
+        if(matcher.find()) {
+            // Parse to integer for checking
+            Integer idNumber = Integer.parseInt(matcher.group(0));
+            // Check if number is outside the range 1 to 200
+            if(idNumber < 1 || idNumber > 200) {
+                System.out.println("ID number must be between 1 and 200.");
+                return false;
+            }
+        }
+        
+        // If all tests pass, return true
+        return true;
+    }
+    
+    
     public String stringOutput() {
         // Prepare a formatted 'status' output string 
         StringBuilder sb = new StringBuilder();
@@ -47,5 +126,5 @@ public class Student {
         sb.append('\n');
         sb.append(this.workload);
         return sb.toString();
-    }
+    }   
 }
