@@ -44,7 +44,7 @@ public class FileIO {
                 System.out.println("Error: " + e);
             } finally {
                 if (bw != null) {
-                    try {
+                    try {     
                         // Close the BufferedWriter.
                         bw.close();
                     } catch (IOException e) {

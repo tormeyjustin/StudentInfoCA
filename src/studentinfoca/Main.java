@@ -25,6 +25,8 @@ public class Main {
         System.out.println(test.firstName);
         System.out.println(test.workload);
         
+        System.out.println(test.stringOutput());
+        
     }
     
 }

@@ -25,19 +25,27 @@ public class Student {
         this.numClasses = classes;
         this.studentID = id;
         
-        int numclasses = this.numClasses;
-        if (numClasses == 1) {
-            workload = "Very Light";
-        } else if (numClasses == 2){
-            workload = "Light";
-        } else if (numclasses >= 3 && numclasses <= 5) {
-            workload = "Part Time";
-        } else if (numclasses >= 6) {
-            workload = "Full Time";
+        if (this.numClasses == 1) {
+            this.workload = "Very Light";
+        } else if (this.numClasses == 2){
+            this.workload = "Light";
+        } else if (this.numClasses >= 3 && this.numClasses <= 5) {
+            this.workload = "Part Time";
+        } else if (this.numClasses >= 6) {
+            this.workload = "Full Time";
         } else {
-            workload = "No workload";
+            this.workload = "No workload";
         }
-        this.workload = workload;
     }
     
+    public String stringOutput() {
+        // Prepare a formatted 'status' output string 
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.studentID);
+        sb.append('-');
+        sb.append(this.lastName);
+        sb.append('\n');
+        sb.append(this.workload);
+        return sb.toString();
+    }
 }
