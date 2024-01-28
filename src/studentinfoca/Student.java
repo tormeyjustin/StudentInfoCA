@@ -63,7 +63,7 @@ public class Student {
     }
     
     public static boolean validateClassCount(int classes) {
-        if (classes >= 1 && classes < 8) {
+        if (classes >= 1 && classes <= 8) {
             return true;
         } else {
             System.out.println("Class count must be a number between 1 annd 8.");
@@ -72,30 +72,31 @@ public class Student {
     }
     
     public static boolean validateStudentId(String id){
+        boolean isValid = true;
 
         // The student “number” must be a minimum of 6 characters with the first 2 characters being numbers,
         if (id.length() < 6) {
             System.out.println("Student ID must be a minimum of 6 characters.");
-            return false;            
+            return false;         
         }
         
         // the 3rd  and 4th characters (and possibly 5th ) being a letter,
-        if (id.matches("[0-9]{2}[a-zA-Z]{2,3}.*")) {
+        if (id.matches("[0-9]{2}[a-zA-Z]{2,3}[0-9]*")) {
         } else {
             System.out.println("The first 2 characters must be digits and the 3rd and 4th characters (and possibly 5th) must be a letter.");
-            return false;
+            isValid = false;
         }
         
         // Ensure that the student number year is at least 2020 (i.e. that the number starts with 20 or higher)
         if (Integer.parseInt(id.substring(0,2)) < 20) {
             System.out.println("First two digits reperesenting year must be 20 or higher");
-            return false;
+            isValid = false;
         }
         
         // and everything after the last letter character being a number.
-        if (!id.matches("[0-9]{2}[a-zA-Z]{2,3}\\d*")) {
-            System.out.println("ID Must have numbers after the letters");
-            return false;
+        if (!id.matches("[0-9]{2}[a-zA-Z]*\\d*")) {
+            System.out.println("ID Must have only numbers after the letters");
+            isValid = false;
         }
         
         // Ensure that the number after the letter(s) is reasonable – i.e. that it is between 1 and 200
@@ -113,7 +114,8 @@ public class Student {
         }
         
         // If all tests pass, return true
-        return true;
+        System.out.println("User ID " + id + " is valid.");
+        return isValid; 
     }
     
     

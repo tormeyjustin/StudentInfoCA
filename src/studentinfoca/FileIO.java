@@ -40,6 +40,10 @@ public class FileIO {
                 bw = new BufferedWriter(new FileWriter(filename, true));
                 // Write the text to the file.
                 bw.write(text);
+                bw.write("\n");
+                System.out.println("Text added to file successfully");
+                // Close the BufferSamedWriter.
+                bw.close();
             } catch (IOException e) {
                 System.out.println("Error: " + e);
             } finally {
