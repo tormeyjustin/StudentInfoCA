@@ -16,8 +16,8 @@ import java.util.Scanner;
  */
 public class FileIO {
         
-        // Read file and return a string
-        public static String readFile(String inputFile) {
+        // Read file and return it as a string
+        public String readFile(String inputFile) {
             StringBuilder sb = new StringBuilder();
             try {
                 Scanner myReader = new Scanner(new FileReader(inputFile));
@@ -33,7 +33,7 @@ public class FileIO {
         }
         
         // Accepts text and a filename and appends text to file
-        public static void appendToFile(String text, String filename) {
+        public void appendToFile(String text, String filename) {
             BufferedWriter bw = null;
             try {
                 // Open the file in append mode.
@@ -42,7 +42,7 @@ public class FileIO {
                 bw.write(text);
                 bw.write("\n");
                 System.out.println("Text added to file successfully");
-                // Close the BufferSamedWriter.
+                // Close the BufferedWriter.
                 bw.close();
             } catch (IOException e) {
                 System.out.println("Error: " + e);

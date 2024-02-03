@@ -19,6 +19,7 @@ public class Main {
     }
     
     public static void inputStudentData(){
+        // Variables
         String firstname;
         String lastname;
         String studentid;
@@ -26,32 +27,39 @@ public class Main {
         
         Scanner userInput = new Scanner(System.in);
         
-        // Request first name
+        // Request and validate first name 
         do {
             System.out.println("Please enter student first name:");
             firstname = userInput.nextLine();
-        } while (Student.validateFirstName(firstname) == false);
+        } while (Student.isValidFirstName(firstname) == false);
         
-        // Request last name
+        // Request and validate last name
         do {
             System.out.println("Please enter student last name:");
             lastname = userInput.nextLine();
-        } while (Student.validateLastName(lastname) == false);
+        } while (Student.isValidLastName(lastname) == false);
         
-        // Request student ID
+        // Request and validate student ID
         do {
             System.out.println("Please enter student ID:");
             studentid = userInput.nextLine();
-        } while (Student.validateStudentId(studentid) == false);
+        } while (Student.isValidStudentId(studentid) == false);
         
-        // Request the number of classes    
+        // Request and validate the number of classes    
         do {
             System.out.println("Please enter number of classes taken:");
+            // If input is not an iteger ask again
+            while(!userInput.hasNextInt()) {
+                System.out.println("Please enter a number");
+                userInput.next();
+            }
+            
             classes = userInput.nextInt();
-        } while (Student.validateClassCount(classes) == false);
+        } while (Student.isValidClassCount(classes) == false);
         
         Student inputStudent = new Student(firstname, lastname, classes, studentid);
-        String formattedStatus = inputStudent.stringOutput();
+        String formattedStatus = inputStudent.getStatus();
+        
         // Append to file
         FileIO fileWrite = new FileIO();
         fileWrite.appendToFile(formattedStatus, "status.txt");
@@ -60,24 +68,9 @@ public class Main {
 
     public static void main(String[] args) {
         
-        // Test read file
-        //FileIO fileR = new FileIO();
-        //String txt = fileR.readFile("students.txt");
-        //System.out.println(txt);
-        //fileR.appendToFile(txt, "status.txt");
-        
-        // Test Student class
-        //Student test = new Student("Justin", "Tormey", 4, "sba23239");
-        //System.out.println(test.firstName);
-        //System.out.println(test.workload);
         
         inputStudentData();
         
-        //System.out.println(test.stringOutput());
-        
-        // Test Student validator
-        //Student.validateFirstName("Justin3");
-        //Student.validateLastName("Justin3");
         
     }
     

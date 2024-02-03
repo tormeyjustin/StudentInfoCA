@@ -15,11 +15,11 @@ import java.util.regex.Pattern;
 
 public class Student {
     // variables
-    String firstName;
-    String lastName;
-    int numClasses;
-    String studentID;
-    String workload;
+    public String firstName;
+    public String lastName;
+    public int numClasses;
+    public String studentID;
+    public String workload;
     
     // Constructor
     public Student(String firstName, String lastName, int classes, String id) {
@@ -37,13 +37,13 @@ public class Student {
         } else if (this.numClasses >= 6) {
             this.workload = "Full Time";
         } else {
-            this.workload = "No workload";
+            this.workload = "No classes";
         }
     }
     
     // Input validation
     
-    public static boolean validateFirstName(String str) {
+    public static boolean isValidFirstName(String str) {
         // Check first name 
         if (str.matches("[a-zA-Z]+")) {
             return true;
@@ -53,7 +53,7 @@ public class Student {
         }
     }
     
-    public static boolean validateLastName(String str) {
+    public static boolean isValidLastName(String str) {
         if (str.matches("[a-zA-Z0-9]+")) {
             return true;
         } else {
@@ -62,7 +62,7 @@ public class Student {
         }
     }
     
-    public static boolean validateClassCount(int classes) {
+    public static boolean isValidClassCount(int classes) {
         if (classes >= 1 && classes <= 8) {
             return true;
         } else {
@@ -71,7 +71,7 @@ public class Student {
         }
     }
     
-    public static boolean validateStudentId(String id){
+    public static boolean isValidStudentId(String id){
         boolean isValid = true;
 
         // The student “number” must be a minimum of 6 characters with the first 2 characters being numbers,
@@ -100,6 +100,7 @@ public class Student {
         }
         
         // Ensure that the number after the letter(s) is reasonable – i.e. that it is between 1 and 200
+        // Get the digits after the letters
         String regex = "\\d+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(id);
@@ -118,8 +119,7 @@ public class Student {
         return isValid; 
     }
     
-    
-    public String stringOutput() {
+    public String getStatus() {
         // Prepare a formatted 'status' output string 
         StringBuilder sb = new StringBuilder();
         sb.append(this.studentID);
