@@ -22,10 +22,10 @@ public class Student {
     public String workload;
     
     // Constructor
-    public Student(String firstName, String lastName, int classes, String id) {
+    public Student(String firstName, String lastName, String classes, String id) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.numClasses = classes;
+        this.numClasses = Integer.parseInt(classes);
         this.studentID = id;
         
         if (this.numClasses == 1) {
@@ -62,11 +62,17 @@ public class Student {
         }
     }
     
-    public static boolean isValidClassCount(int classes) {
-        if (classes >= 1 && classes <= 8) {
+    public static boolean isValidClassCount(String classes) {
+        int numClasses = 0;
+        try {
+            numClasses = Integer.parseInt(classes);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format");
+        }
+        if (numClasses >= 1 && numClasses <= 8) {
             return true;
         } else {
-            System.out.println("Class count must be a number between 1 annd 8.");
+            System.out.println("Class count must be a number between 1 and 8.");
             return false;
         }
     }
@@ -85,6 +91,7 @@ public class Student {
         } else {
             System.out.println("The first 2 characters must be digits and the 3rd and 4th characters (and possibly 5th) must be a letter.");
             isValid = false;
+            return false;
         }
         
         // Ensure that the student number year is at least 2020 (i.e. that the number starts with 20 or higher)
@@ -115,7 +122,7 @@ public class Student {
         }
         
         // If all tests pass, return true
-        System.out.println("User ID " + id + " is valid.");
+        //System.out.println("User ID " + id + " is valid.");
         return isValid; 
     }
     

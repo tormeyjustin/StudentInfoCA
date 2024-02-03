@@ -41,7 +41,7 @@ public class FileIO {
                 // Write the text to the file.
                 bw.write(text);
                 bw.write("\n");
-                System.out.println("Text added to file successfully");
+                System.out.println("Student status added to file successfully");
                 // Close the BufferedWriter.
                 bw.close();
             } catch (IOException e) {
