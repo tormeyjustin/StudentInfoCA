@@ -89,7 +89,7 @@ public class Student {
         // the 3rd  and 4th characters (and possibly 5th ) being a letter,
         if (id.matches("[0-9]{2}[a-zA-Z]{2,3}[0-9]*")) {
         } else {
-            System.out.println("The first 2 characters must be digits and the 3rd and 4th characters (and possibly 5th) must be a letter.");
+            System.out.println("The first 2 characters of the ID must be digits and the 3rd and 4th characters (and possibly 5th) must be a letter.");
             isValid = false;
             return false;
         }
@@ -122,7 +122,6 @@ public class Student {
         }
         
         // If all tests pass, return true
-        //System.out.println("User ID " + id + " is valid.");
         return isValid; 
     }
     
@@ -130,9 +129,9 @@ public class Student {
         // Prepare a formatted 'status' output string 
         StringBuilder sb = new StringBuilder();
         sb.append(this.studentID);
-        sb.append('-');
+        sb.append(" - ");
         sb.append(this.lastName);
-        sb.append('\n');
+        sb.append("\n");
         sb.append(this.workload);
         return sb.toString();
     }   

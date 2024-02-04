@@ -142,6 +142,7 @@ public class Main {
                     selected = menuOption.nextLine();
                     switch (selected) {
                         case "y":
+                            // Loop over processedStudents ArrayList and write each one to the output file
                             for(Student student : processedStudents) {
                                 txtfile.appendToFile(student.getStatus(), outputTxtFile);
                             }
